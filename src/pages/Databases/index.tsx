@@ -52,6 +52,7 @@ const Databases = () => {
             title={title}
             onItemAction={handleItemAction}
             icon={EyeSVG}
+            iconTooltip="View Schema"
           />
         }
       />

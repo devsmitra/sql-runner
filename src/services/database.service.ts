@@ -1,3 +1,4 @@
+import { randomDate, randomName, randomPhone, randomEmail } from "./mock";
 import { getQueryFromType, setQueryByType } from "./query.service";
 
 /**
@@ -5,22 +6,16 @@ import { getQueryFromType, setQueryByType } from "./query.service";
  * @returns {Array} The generated table data.
  */
 export const getTableData = () => {
-  const user = {
-    id: 1,
-    firstName: "John",
-    lastName: "Doe",
+  return Array.from({ length: 1000 }, (_, i) => ({
+    id: i + 1,
     job: "Software Engineer",
     company: "Facebook",
     location: "California",
-    lastLogin: "12/16/2020",
-    phone: "123-456-7890",
-    email: "dummy@gmail.com",
-  };
-
-  return Array.from({ length: 1000 }, (_, i) => ({
-    ...user,
-    id: i + 1,
-    firstName: `${user.firstName} ${i + 1}`,
+    firstName: randomName(),
+    lastName: randomName(),
+    lastLogin: randomDate(),
+    phone: randomPhone(),
+    email: randomEmail(),
   }));
 };
 

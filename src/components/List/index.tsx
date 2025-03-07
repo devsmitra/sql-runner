@@ -8,6 +8,7 @@ export interface ListItemProps {
   children?: ListItemProps[];
   onItemAction?: (id: string) => void;
   icon?: string;
+  iconTooltip?: string;
 }
 
 // Define the ListProps interface
@@ -18,6 +19,7 @@ interface ListProps {
   onItemClick: (id: string) => void;
   onItemAction?: (id: string) => void;
   icon?: string;
+  iconTooltip?: string;
 }
 
 // Function to create a mapping of parent to child items
@@ -43,7 +45,7 @@ export const ListItem: FC<
   ListItemProps & {
     activeItemId?: string;
   }
-> = ({ label, id, onItemAction, activeItemId, icon }) => {
+> = ({ label, id, onItemAction, activeItemId, icon, iconTooltip }) => {
   // Handle item action button click
   const handleItemActionClick = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -60,10 +62,18 @@ export const ListItem: FC<
       <a className={id === activeItemId ? "menu-active" : ""}>{label}</a>
       <div>
         <button
-          className="cursor-pointer hover:bg-base-200 p-1 rounded-md"
+          className="cursor-pointer hover:bg-base-200 p-1 rounded-md tooltip tooltip-left z-100"
           onClick={handleItemActionClick}
+          data-tip={iconTooltip}
         >
-          {icon && <img src={icon} alt={label} className="size-4" />}
+          {icon && (
+            <img
+              src={icon}
+              alt={label}
+              className="size-4"
+              style={{ filter: "invert(0.7)" }}
+            />
+          )}
         </button>
       </div>
     </div>
@@ -78,6 +88,7 @@ export const List: FC<ListProps> = ({
   onItemAction,
   icon,
   title,
+  iconTooltip,
 }) => {
   // Handle item click
   const handleItemClick = (
@@ -125,6 +136,7 @@ export const List: FC<ListProps> = ({
                         icon={icon}
                         activeItemId={activeItemId}
                         onItemAction={onItemAction}
+                        iconTooltip={iconTooltip}
                       />
                     </li>
                   ))}
@@ -136,6 +148,7 @@ export const List: FC<ListProps> = ({
                 icon={icon}
                 activeItemId={activeItemId}
                 onItemAction={onItemAction}
+                iconTooltip={iconTooltip}
               />
             )}
           </li>

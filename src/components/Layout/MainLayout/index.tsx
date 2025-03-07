@@ -19,10 +19,17 @@ const MainLayout = () => {
               data-tip={item.label}
               to={item.link}
               className={({ isActive }) =>
-                `tooltip tooltip-right mt-2 ${isActive ? "bg-slate-300" : ""}`
+                `tooltip tooltip-right mt-2 ${isActive ? "bg-black" : ""}`
               }
             >
-              <img src={item.icon} alt={item.label} className="size-6" />
+              <img
+                src={item.icon}
+                alt={item.label}
+                className="size-6"
+                style={{
+                  filter: "invert(0.9)",
+                }}
+              />
             </NavLink>
           </li>
         ))}

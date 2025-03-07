@@ -41,7 +41,7 @@ const DataGrid: FC<DataGridProps> = ({ columns = [], data = [] }) => {
 
   return (
     <div>
-      <div className="bg-base-200 flex justify-end text-primary-content p-2 shadow-md">
+      <div className="bg-base-200 flex justify-end text-primary-content p-2 shadow-md h-[3rem]">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn px-16 btn-primary">
             Export
@@ -62,15 +62,16 @@ const DataGrid: FC<DataGridProps> = ({ columns = [], data = [] }) => {
           </ul>
         </div>
       </div>
+      <div className="divider m-0 bg-base-200"></div>
       <TableVirtuoso
-        style={{ height: 500 }}
-        className="text-white table-x table-zebra text-left"
+        style={{ height: "calc(100vh - 27rem)" }}
+        className="text-white table-x text-left"
         data={data}
         fixedHeaderContent={() => (
           <tr>
             {columns.map((column) => (
               <th
-                className="bg-base-200 py-2 sticky top-0 z-10 w-40 px-2 shadow-md"
+                className="bg-base-300 py-2 sticky top-0 z-10 w-40 px-2 shadow-md"
                 key={column}
               >
                 {column}

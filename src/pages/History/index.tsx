@@ -55,6 +55,7 @@ const SaveAndHistory: FC<SaveAndHistoryProps> = ({ type }) => {
           title={type === "save" ? "Saved Queries" : "Query History"}
           onItemAction={handleDeleteAction}
           icon={TrashSvg}
+          iconTooltip="Delete Query"
         />
       }
     />

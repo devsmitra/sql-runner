@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { fileExportOptions } from "./config";
-import SearchSVG from "../../assets/search.svg";
+import SearchSVG from "../../assets/icons/search.svg";
 
 interface DataGridActionsProps {
   handleExportClick: (fileType: string) => void;

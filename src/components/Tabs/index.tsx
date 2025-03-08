@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import PlusSvg from "../../assets/plus-solid.svg";
+import PlusSvg from "../../assets/icons/plus-solid.svg";
 
 interface TabProps {
   onTabChange: (tab: string) => void;

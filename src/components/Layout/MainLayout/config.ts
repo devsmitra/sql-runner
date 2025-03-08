@@ -1,7 +1,7 @@
-import HomeIcon from "../../../assets/home.svg";
-import HistoryIcon from "../../../assets/history.svg";
-import DatabaseIcon from "../../../assets/database.svg";
-import SaveIcon from "../../../assets/save.svg";
+import HomeIcon from "../../../assets/icons/home.svg";
+import HistoryIcon from "../../../assets/icons/history.svg";
+import DatabaseIcon from "../../../assets/icons/database.svg";
+import SaveIcon from "../../../assets/icons/save.svg";
 
 /**
  * Configuration for the main menu items.

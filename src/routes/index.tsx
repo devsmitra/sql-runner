@@ -2,7 +2,8 @@ import React from "react";
 import MainLayout from "../components/Layout/MainLayout";
 import { AppRouteProps, toAppRouter } from "./helper";
 import databasesRoutes from "./databases.routes";
-import historyRoutes from "./history.routes";
+import historyRoutes from "./saveAndHistory.routes";
+import ErrorPage from "../components/Error";
 
 const Dashboard = React.lazy(() => import("../pages/Dashboard"));
 
@@ -19,6 +20,10 @@ const routes: AppRouteProps[] = [
       },
       ...databasesRoutes,
       ...historyRoutes,
+      {
+        path: "*",
+        element: <ErrorPage />,
+      },
     ],
   },
 ];

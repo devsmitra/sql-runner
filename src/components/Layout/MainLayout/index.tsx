@@ -2,6 +2,8 @@ import { NavLink, Outlet } from "react-router";
 import mainMenu from "./config";
 import { ErrorBoundary } from "react-error-boundary";
 import { ErrorPage } from "../../Error";
+import React from "react";
+import { PageLoader } from "../../Loaders";
 
 /**
  * MainLayout component to define the main layout of the application.
@@ -37,7 +39,9 @@ const MainLayout = () => {
       {/* Main content area */}
       <section className="flex-1">
         <ErrorBoundary fallback={<ErrorPage />}>
-          <Outlet />
+          <React.Suspense fallback={<PageLoader />}>
+            <Outlet />
+          </React.Suspense>
         </ErrorBoundary>
       </section>
     </main>

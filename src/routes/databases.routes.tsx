@@ -2,7 +2,7 @@ import { AppRouteProps } from "./helper";
 import React from "react";
 
 const Databases = React.lazy(() => import("../pages/Databases"));
-const Worksheet = React.lazy(() => import("../pages/Worksheet"));
+const Worksheet = React.lazy(() => import("../components/Worksheet"));
 
 const databasesRoutes: AppRouteProps[] = [
   {

@@ -2,8 +2,8 @@ import React from "react";
 import { AppRouteProps } from "./helper";
 
 // Lazy load the History and Worksheet components
-const History = React.lazy(() => import("../pages/History"));
-const Worksheet = React.lazy(() => import("../pages/Worksheet"));
+const History = React.lazy(() => import("../pages/SaveAndHistory"));
+const Worksheet = React.lazy(() => import("../components/Worksheet"));
 
 // Define the paths for history and save routes
 const paths = ["history", "save"] as const;

@@ -7,8 +7,9 @@ import {
 } from "../../services/database.service";
 import { useParams } from "react-router";
 import { setQueryByType } from "../../services/query.service";
-import { useToast } from "../../contexts/globalContext";
-import { WorksheetForm } from "./WorksheetForm";
+import { useTabHistory, useToast } from "../../contexts/globalContext";
+import { Tabs } from "../../components/Tabs";
+import { WorksheetActions } from "./WorksheetActions";
 
 /**
  * Worksheet component to display and manage SQL queries.
@@ -22,6 +23,9 @@ const Worksheet: FC<{ parent: "databases" | "history" | "save" }> = ({
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(false);
   const [, setToastState] = useToast();
+  const [tab, setTab] = useState("0");
+  const [queries, setQueries] = useTabHistory();
+  const [expanded, setExpanded] = useState(false);
 
   const [gridData, setGridData] = useState<{
     columns: string[];
@@ -58,50 +62,49 @@ const Worksheet: FC<{ parent: "databases" | "history" | "save" }> = ({
     });
   };
 
+  const handleTabChange = (id: string) => {
+    if (typeof queries === "object") {
+      setQuery(queries[id] ?? "");
+    }
+    setTab(id);
+  };
+
   useEffect(() => {
-    const response = getWorksheetQuery(id ?? "", parent);
+    const response: string = getWorksheetQuery(id ?? "", parent);
     if (response) {
       setQuery(response);
+      setQueries({ [tab]: response });
     }
   }, [id, parent]);
 
   return (
-    <div className="text-gray-900">
-      <div className="h-[3rem] flex items-center justify-end py-4 px-4 sticky bg-base-100 z-10">
-        {visible && (
-          <WorksheetForm
-            visible={visible}
-            onClose={() => setVisible(false)}
-            onSubmit={handleFormSubmit}
-          />
-        )}
-        <button
-          className="btn btn-sm mr-4 w-30 bg-gray-500"
-          onClick={handleQuerySave}
-          disabled={!query}
-        >
-          Save
-        </button>
-        <button
-          className="btn btn-sm mr-4 w-30 bg-gray-500"
-          onClick={() => setQuery("")}
-          disabled={!query}
-        >
-          Clear
-        </button>
-        <button
-          className="btn btn-primary btn-sm w-30"
-          onClick={() => handleQueryRun(query)}
-          disabled={!query}
-        >
-          Run
-        </button>
+    <div className="text-gray-100">
+      <div className="flex items-center justify-between  px-4">
+        <Tabs onTabChange={handleTabChange} />
+        <WorksheetActions
+          query={query}
+          setQuery={setQuery}
+          handleQueryRun={handleQueryRun}
+          handleQuerySave={handleQuerySave}
+          handleFormSubmit={handleFormSubmit}
+          visible={visible}
+          setVisible={setVisible}
+          handleExpand={() => {
+            setExpanded(!expanded);
+          }}
+        />
       </div>
-      <QueryEditor
-        onQueryRun={handleQueryRun}
-        query={query}
-        onQueryChange={setQuery}
-      />
+      <div className="text-gray-900 ">
+        <QueryEditor
+          onQueryRun={handleQueryRun}
+          query={query}
+          onQueryChange={(query: string) => {
+            setQueries({ [tab]: query });
+            setQuery(query);
+          }}
+          height={expanded ? "40rem" : "20rem"}
+        />
+      </div>
       <DataGrid columns={gridData.columns} data={gridData.data} />
     </div>
   );

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { TableVirtuoso } from "react-virtuoso";
 import { toDownloadableCSV, toDownloadableJSON } from "../../utils/files";
-import { fileExportOptions } from "./config";
+import { DataGridActions } from "./DataGridActions";
 
 // Define the props for the DataGrid component
 interface DataGridProps {
@@ -41,27 +41,7 @@ const DataGrid: FC<DataGridProps> = ({ columns = [], data = [] }) => {
 
   return (
     <div>
-      <div className="bg-base-200 flex justify-end text-primary-content p-2 shadow-md h-[3rem]">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn px-16 btn-primary">
-            Export
-          </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu bg-base-300 z-1 shadow-m w-full"
-          >
-            {fileExportOptions.map((option) => (
-              <li
-                className="w-full"
-                key={option}
-                onClick={() => handleExportClick(option)}
-              >
-                <a>{option}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <DataGridActions handleExportClick={handleExportClick} />
       <div className="divider m-0 bg-base-200"></div>
       <TableVirtuoso
         style={{ height: "calc(100vh - 27rem)" }}

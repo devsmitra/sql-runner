@@ -58,8 +58,12 @@ export const ListItem: FC<
   };
 
   return (
-    <div className="flex justify-between">
-      <a className={id === activeItemId ? "menu-active" : ""}>{label}</a>
+    <div
+      className={`flex justify-between ${
+        id === activeItemId ? "menu-active" : ""
+      }`}
+    >
+      <a>{label}</a>
       <div>
         <button
           className="cursor-pointer hover:bg-base-200 p-1 rounded-md tooltip tooltip-left z-100"

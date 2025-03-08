@@ -34,3 +34,19 @@ export const randomEmail = () => {
   const domain = domains[Math.floor(Math.random() * domains.length)];
   return `${name}@${domain}`;
 };
+
+export const getMockTableData = (size?: number) => {
+  const sizeKey = size ?? 1000;
+  const data = Array.from({ length: sizeKey }, (_, i) => ({
+    id: i + 1,
+    job: "Software Engineer",
+    company: "Facebook",
+    location: "California",
+    firstName: randomName(),
+    lastName: randomName(),
+    lastLogin: randomDate(),
+    phone: randomPhone(),
+    email: randomEmail(),
+  }));
+  return data;
+};

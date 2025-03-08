@@ -10,7 +10,7 @@ import { ErrorPage } from "../../Error";
  */
 const MainLayout = () => {
   return (
-    <main className="flex h-full">
+    <main className="flex min-h-screen">
       {/* Navigation menu */}
       <ul className="menu bg-base-200 sticky top-0 z-2 p-2">
         {mainMenu.map((item) => (

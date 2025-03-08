@@ -1,23 +1,11 @@
-import { randomDate, randomName, randomPhone, randomEmail } from "./mock";
+import { getMockTableData } from "./mock";
 import { getQueryFromType, setQueryByType } from "./query.service";
 
 /**
  * Generate sample table data.
  * @returns {Array} The generated table data.
  */
-export const getTableData = () => {
-  return Array.from({ length: 1000 }, (_, i) => ({
-    id: i + 1,
-    job: "Software Engineer",
-    company: "Facebook",
-    location: "California",
-    firstName: randomName(),
-    lastName: randomName(),
-    lastLogin: randomDate(),
-    phone: randomPhone(),
-    email: randomEmail(),
-  }));
-};
+export const getTableData = () => getMockTableData(1000);
 
 /**
  * Get the columns of a table.
@@ -109,6 +97,7 @@ export const getTableNames = () => {
  * @returns {Array} The schema of the table.
  */
 export const getSchema = (_tableId: string) => {
+  // When Querying a real database, we will need tableId to get the schema
   return [
     {
       name: "id",

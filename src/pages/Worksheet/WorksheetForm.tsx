@@ -24,7 +24,7 @@ export const WorksheetForm: FC<{
 
   return (
     <Modal visible={visible} title="Save Query" onClose={onClose}>
-      <form className="py-4">
+      <form className="py-4 text-gray-900">
         <input
           type="text"
           name="worksheetName"

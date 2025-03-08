@@ -7,6 +7,7 @@ interface QueryEditorProps {
   onQueryRun: (query: string) => void;
   query: string;
   onQueryChange: (val: string) => void;
+  height?: string;
 }
 
 /**
@@ -16,6 +17,7 @@ const QueryEditor: FC<QueryEditorProps> = ({
   onQueryRun,
   query,
   onQueryChange,
+  height,
 }) => {
   /**
    * Handle the query run action.
@@ -28,7 +30,7 @@ const QueryEditor: FC<QueryEditorProps> = ({
     <article>
       <CodeMirror
         value={query}
-        height="20rem"
+        height={height ?? "20rem"}
         extensions={[sql()]}
         onChange={onQueryChange}
         autoFocus

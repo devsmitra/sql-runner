@@ -9,6 +9,7 @@ interface ToastState {
 
 export interface GlobalState {
   toast: ToastState;
+  tabHistory: { [key: string]: string };
 }
 
 // Define the default state
@@ -18,6 +19,7 @@ const defaultState: GlobalState = {
     message: "",
     type: "success",
   },
+  tabHistory: {},
 };
 
 // Define the action type
@@ -45,6 +47,22 @@ export const useToast = (): [
       toast: { ...state.toast, ...toast },
     });
   return [state.toast, setToast];
+};
+
+export const useTabHistory = (): [
+  { [key: string]: string },
+  (tabHistory: { [key: string]: string }) => void
+] => {
+  const [state, setState] = useGlobalContext();
+  const setTabHistory = (tabHistory: { [key: string]: string }) =>
+    setState({
+      ...state,
+      tabHistory: {
+        ...state.tabHistory,
+        ...tabHistory,
+      },
+    });
+  return [state.tabHistory, setTabHistory];
 };
 
 // Reducer function to handle state updates

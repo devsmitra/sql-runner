@@ -10,8 +10,9 @@ All the data in the application is mocked and predefined. The application does n
 
 ## Demo
 
-[Live Preview Link](https://sql-runner-pi.vercel.app/)
-[![Demo Video](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+### [Live Preview Link](https://sql-runner-pi.vercel.app/)
+
+### [Demo Video](https://youtu.be/SnrYZb5P5L4)
 
 ## Key Features
 
@@ -75,6 +76,10 @@ All the data in the application is mocked and predefined. The application does n
 ## Performance & Optimization
 
 - **Lighthouse Score**: X (TBD)
+<img width="1725" alt="Screenshot 2025-03-09 at 12 31 14 AM" src="https://github.com/user-attachments/assets/0ec0300c-85f9-4e4c-9d6d-394f10267873" />
+<img width="1721" alt="Screenshot 2025-03-09 at 12 31 00 AM" src="https://github.com/user-attachments/assets/03283f10-b9cd-434e-93b4-7cc1f0770dcd" />
+
+
 - Optimized for fast performance with a lightweight architecture.
 - Lazy-loaded components to improve responsiveness and initial load times by loading only necessary elements when required.
 - Infinite scroll and virtualization for efficient rendering of large datasets, ensuring smooth query execution and result display.
@@ -97,7 +102,7 @@ All the data in the application is mocked and predefined. The application does n
 - **Accessiblity**: Improve accessibility features to cater to a wider audience, including users with disabilities.
 - **I18n Support**: Add multi-language support to make the application accessible to users from different regions.
 
-## Deployment
+## Development
 
 ### Prerequisites
 

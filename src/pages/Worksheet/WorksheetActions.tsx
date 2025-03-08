@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { WorksheetForm } from "./WorksheetForm";
-import TrashSvg from "../../assets/trash-solid.svg";
-import SaveSvg from "../../assets/save.svg";
-import PlaySvg from "../../assets/play-solid.svg";
-import MaximizeSvg from "../../assets/maximize-solid.svg";
+import TrashSvg from "../../assets/icons/trash-solid.svg";
+import SaveSvg from "../../assets/icons/save.svg";
+import PlaySvg from "../../assets/icons/play-solid.svg";
+import MaximizeSvg from "../../assets/icons/maximize-solid.svg";
 
 export interface WorksheetActionsProps {
   visible: boolean;

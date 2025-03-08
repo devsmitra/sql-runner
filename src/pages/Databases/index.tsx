@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import { List } from "../../components/List";
 import { getTableNames } from "../../services/database.service";
 import SideBarLayout from "../../components/Layout/SideBarLayout";
-import EyeSVG from "../../assets/eye-solid.svg";
+import EyeSVG from "../../assets/icons/eye-solid.svg";
 import { Modal } from "../../components/Modal";
 import { useState } from "react";
 import { DatabaseSchema } from "../../components/DatabaseSchema";

@@ -7,7 +7,7 @@ import {
 } from "../../services/query.service";
 import SideBarLayout from "../../components/Layout/SideBarLayout";
 import { useToast } from "../../contexts/globalContext";
-import TrashSvg from "../../assets/trash-solid.svg";
+import TrashSvg from "../../assets/icons/trash-solid.svg";
 
 // Define the props for the SaveAndHistory component
 interface SaveAndHistoryProps {

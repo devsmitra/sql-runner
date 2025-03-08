@@ -111,7 +111,7 @@ export const List: FC<ListProps> = ({
 
   return (
     <div className="overflow-y-scroll">
-      <h2 className="text-lg font-semibold text-white-900 px-6 pt-2">
+      <h2 className="text-lg font-semibold text-base-content px-6 pt-2">
         {title}
       </h2>
       <div className="divider p-0 m-0"></div>

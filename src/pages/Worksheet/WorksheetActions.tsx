@@ -27,28 +27,32 @@ export const WorksheetActions: FC<WorksheetActionsProps> = (props) => {
         />
       )}
       <button
-        className="btn btn-square mr-2 bg-blue-100"
+        className="btn btn-square mr-2 bg-blue-100 tooltip tooltip-bottom"
+        data-tip="Expand Query Editor"
         onClick={props.handleExpand}
       >
         <img src={MaximizeSvg} alt="Maximize" className="size-5" />
       </button>
       <button
-        className="btn btn-square mr-2 bg-orange-100"
+        className="btn btn-square mr-2 bg-orange-100 tooltip tooltip-bottom"
         onClick={() => props.setQuery("")}
+        data-tip="Clear query"
       >
-        <img src={TrashSvg} alt="Clear" className="size-5" />
+        <img src={TrashSvg} alt="Clear" className="size-5 " />
       </button>
       <button
-        className="btn btn-square mr-2 bg-blue-100"
+        className="btn btn-square mr-2 bg-blue-100 tooltip tooltip-bottom"
         onClick={props.handleQuerySave}
         disabled={!props.query}
+        data-tip="Save query"
       >
         <img src={SaveSvg} alt="Save" className="size-5" />
       </button>
       <button
-        className="btn btn-square bg-green-200"
+        className="btn btn-square bg-green-200 tooltip tooltip-bottom"
         onClick={() => props.handleQueryRun(props.query)}
         disabled={!props.query}
+        data-tip="Run query"
       >
         <img src={PlaySvg} alt="Run" className="size-5" />
       </button>

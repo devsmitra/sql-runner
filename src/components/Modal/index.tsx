@@ -18,7 +18,7 @@ const ModalContent: FC<ModalContentProps> = ({ title, onClose, children }) => {
   return (
     <div className="modal-box bg-base-50 px-4 py-2">
       <div className="flex justify-between items-center">
-        <h3 className="font-bold text-lg text-white">{title}</h3>
+        <h3 className="font-bold text-lg text-base-content">{title}</h3>
         <button className="btn btn-circle" onClick={onClose}>
           X
         </button>

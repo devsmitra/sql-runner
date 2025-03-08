@@ -1,54 +1,126 @@
-# React + TypeScript + Vite
+# Online SQL Queries Runner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+This project is a web-based application that allows users to run SQL queries directly in their browser. Built using React and TypeScript, the application features a mock backend with predefined datasets. Users can execute SQL queries and view results in a structured format. The application is deployed on Vercel and can be accessed [here](https://sql-runner-pi.vercel.app/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Data Mocking
 
-## Expanding the ESLint configuration
+All the data in the application is mocked and predefined. The application does not connect to any real database. This is done to simulate a real-world scenario where users can run queries on a database without having to set up a backend server.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Demo
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+[Live Preview Link](https://sql-runner-pi.vercel.app/)
+[![Demo Video](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Key Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### System Overview
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- System Health Page to check application and backend server status.
+- List of databases and tables for easy selection.
+- Predefined queries for each table, accessible by clicking the table name.
+- Schema view for each table, accessible via the eye icon.
+
+### Database Views
+
+- **List of Database Views**:
+  - View all available database views.
+  - By clicking on a database view, users can see the list of tables available in that view.
+  - By clicking on a table, users can see the schema of that table.
+
+### Query Execution & Management
+
+- **Tab-based view**: Execute multiple queries while maintaining context.
+- **Rich SQL Editor**:
+  - Syntax highlighting and auto-completion.
+  - Quick execution with keyboard shortcut (**Ctrl + Enter**).
+  - **Options**:
+    - **Run Query**: Executes the SQL query and displays the result in a structured format.
+    - **Clear Query**: Clears the query editor to allow users to start fresh without manually deleting text.
+    - **Save Query**: Saves the current query for future reference, allowing easy access to frequently used SQL commands.
+    - **Expand Editor**: Toggles between full-screen and normal view to enhance readability and user experience.
+- **Results Display**:
+  - Table view with sorting, filtering, and searching capabilities.
+  - Export results in CSV or JSON format for easy data sharing and analysis.
+  - Display of total and visible result counts to provide clarity on query outputs.
+
+### Saved Queries & History
+
+- **Saved Queries**:
+  - View all saved queries in a structured list.
+  - Load saved queries into the editor for execution with a single click.
+  - Delete saved queries with confirmation prompts to prevent accidental removal.
+  - Receive toast notifications for query-related actions.
+- **Query History**:
+  - Automatically log all executed queries with timestamps for easy tracking.
+  - Manage query history with options to delete entries after confirmation.
+  - Reload past queries into the editor by clicking on them for re-execution.
+
+### Performance Enhancements
+
+- **Lazy loading**: Load components only when needed, ensuring faster initial load times and better responsiveness.
+- **Local storage**: Store user queries locally for persistence across sessions, enabling seamless continuation of work.
+- **Infinite scroll & virtualization**: Efficiently handle large datasets, allowing smooth scrolling and quick access to results without performance degradation.
+- **Dynamic routing**: Maintain session state and enable query sharing via URLs, limited to database views due to the mock backend setup.
+
+## Frameworks & Libraries Used
+
+- **React** - A powerful frontend library for building interactive user interfaces.
+- **TypeScript** - Provides static type checking to enhance code reliability and maintainability.
+- **Tailwind CSS + DaisyUI** - A utility-first CSS framework with component-based styling for a modern UI.
+- **react-codemirror** - A lightweight, easy-to-use code editor for SQL queries with syntax highlighting and auto-completion.
+- **react-virtuoso** - A virtualized list component that optimizes rendering for large datasets, improving performance and efficiency.
+
+## Performance & Optimization
+
+- **Lighthouse Score**: X (TBD)
+- Optimized for fast performance with a lightweight architecture.
+- Lazy-loaded components to improve responsiveness and initial load times by loading only necessary elements when required.
+- Infinite scroll and virtualization for efficient rendering of large datasets, ensuring smooth query execution and result display.
+
+## Additional Enhancements
+
+- Tooltip for action buttons to provide context and guidance to users.
+- Robust error handling to prevent crashes and unexpected failures.
+- System health page to monitor application status and ensure smooth operation.
+- Toast notifications for key user actions to provide instant feedback.
+- Confirmation dialogs for query deletions to prevent accidental data loss.
+- Keyboard shortcuts for improved efficiency and faster query execution.
+
+## Future Enhancements
+
+- **Responsive Design**: Optimize for mobile screens to improve usability across devices, enabling users to run queries on the go. Currently, the application is designed with the assumption that users will primarily access it on desktops, laptops, or tablets.
+- **Dark Mode**: Introduce a dark theme for a more comfortable viewing experience, especially in low-light environments.
+- **UX Improvements**: Enhance overall usability, navigation, and design consistency.
+- **Data Import**: Allow users to import external datasets for deeper analysis.
+- **Accessiblity**: Improve accessibility features to cater to a wider audience, including users with disabilities.
+- **I18n Support**: Add multi-language support to make the application accessible to users from different regions.
+
+## Deployment
+
+### Prerequisites
+
+- Latest version of Node.js installed.
+- A code editor (e.g., Visual Studio Code).
+- A web browser to run the application.
+
+### Development Setup
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/devsmitra/sql-runner.git
+   ```
+2. Navigate to the project folder:
+   ```sh
+   cd sql-runner
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Start the development server:
+   ```sh
+   npm run dev
+   ```
+5. Open [http://localhost:5173/](http://localhost:5173/) in your browser to view the application.

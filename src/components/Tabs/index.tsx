@@ -25,7 +25,9 @@ export const Tabs: FC<TabProps> = ({ onTabChange }) => {
         <a
           role="tab"
           className={`tab ${
-            tab.id === activeTab ? "tab-active [--tab-border-color:white]" : ""
+            tab.id === activeTab
+              ? "tab-active [--tab-border-color:text-base-content]"
+              : ""
           }`}
           key={tab.id}
           onClick={() => handleTabChange(tab.id)}
@@ -35,13 +37,14 @@ export const Tabs: FC<TabProps> = ({ onTabChange }) => {
       ))}
       <button
         role="tab"
-        className="btn btn-square ml-2 bg-blue-100"
+        className="btn btn-square ml-2 bg-blue-100 tooltip tooltip-bottom"
         onClick={() =>
           setTabs([
             ...tabs,
             { lable: `Tab ${tabs.length + 1}`, id: `${tabs.length}` },
           ])
         }
+        data-tip="Add Tab"
       >
         <img src={PlusSvg} alt="Add" className="size-5" />
       </button>

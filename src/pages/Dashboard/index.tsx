@@ -44,7 +44,9 @@ const Stat: FC<StatProps> = ({ title, value, description, status }) => {
 const Dashboard: FC = () => {
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold text-white pb-4">Database Analytics</h1>
+      <h1 className="text-2xl font-bold text-base-content pb-4">
+        Database Analytics
+      </h1>
       <section className="gap-2 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {databaseStates.map((state) => (
           <div

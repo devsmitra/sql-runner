@@ -1,7 +1,8 @@
-import { FC } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { TableVirtuoso } from "react-virtuoso";
 import { toDownloadableCSV, toDownloadableJSON } from "../../utils/files";
 import { DataGridActions } from "./DataGridActions";
+import { debounce } from "../../utils/debounce";
 
 // Define the props for the DataGrid component
 interface DataGridProps {
@@ -15,10 +16,23 @@ interface DataGridProps {
  * @returns {JSX.Element} The rendered component.
  */
 const DataGrid: FC<DataGridProps> = ({ columns = [], data = [] }) => {
-  /**
-   * Handle export button click.
-   * @param {string} fileType - The type of file to export.
-   */
+  const [searchText, setSearchText] = useState("");
+  const [tableData, setTableData] = useState(data);
+
+  useEffect(() => {
+    if (searchText === "") {
+      setTableData(data);
+      return;
+    }
+    const filteredData = data.filter((item) => {
+      return Object.values(item).some((value) =>
+        value.toString().toLowerCase().includes(searchText.toLowerCase())
+      );
+    });
+    setTableData(filteredData);
+  }, [searchText, data]);
+
+  // Handle export button click.
   const handleExportClick = (fileType: string) => {
     if (fileType === "CSV") {
       toDownloadableCSV(data, columns);
@@ -30,10 +44,17 @@ const DataGrid: FC<DataGridProps> = ({ columns = [], data = [] }) => {
     }
   };
 
+  const onSearchTextChange = useCallback(
+    debounce((searchText: string) => {
+      setSearchText(searchText);
+    }),
+    []
+  );
+
   // Render a message if no data or columns are provided
   if (columns.length === 0 || data.length === 0) {
     return (
-      <h2 className="text-white text-2xl text-center pt-8">
+      <h2 className="text-base-content text-2xl text-center pt-8">
         No data to display
       </h2>
     );
@@ -41,12 +62,17 @@ const DataGrid: FC<DataGridProps> = ({ columns = [], data = [] }) => {
 
   return (
     <div>
-      <DataGridActions handleExportClick={handleExportClick} />
+      <DataGridActions
+        handleExportClick={handleExportClick}
+        onSearch={onSearchTextChange}
+        totalRecords={data.length}
+        recordsShown={tableData.length}
+      />
       <div className="divider m-0 bg-base-200"></div>
       <TableVirtuoso
         style={{ height: "calc(100vh - 27rem)" }}
-        className="text-white table-x text-left"
-        data={data}
+        className="text-base-content table-x text-left"
+        data={tableData}
         fixedHeaderContent={() => (
           <tr>
             {columns.map((column) => (

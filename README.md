@@ -129,3 +129,29 @@ All the data in the application is mocked and predefined. The application does n
    npm run dev
    ```
 5. Open [http://localhost:5173/](http://localhost:5173/) in your browser to view the application.
+
+
+### Directory Structure
+    .
+    ├── src                     # Source files
+    │   ├── assets              # Icons, fonts, and other assets
+    │   ├── components          # Reusable components
+    │   │     ├── Layout        # Layout components
+    │   │     ├── QueryEditor   # SQL query editor components
+    │   │     ├── DataGrid      # Data grid components
+    │   │     ├── List          # List components
+    │   │     ├── Modal         # Modal components
+    │   │     ├── Tabs          # Tab components
+    │   │     ├── Toast         # Toast components
+    │   │     └── ...           # Other components
+    │   ├── contexts            # Context providers
+    │   ├── pages               # Application pages
+    │   ├── routes              # Application routes
+    │   ├── services            # API services
+    │   ├── utils               # Utility functions
+    │   └── App.tsx             # Main application component
+    ├── public                  # Public files
+    ├── .gitignore
+    ├── package.json
+    ├── README.md
+    └── tsconfig.json

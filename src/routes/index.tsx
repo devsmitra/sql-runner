@@ -2,7 +2,7 @@ import React from "react";
 import MainLayout from "../components/Layout/MainLayout";
 import { AppRouteProps, toAppRouter } from "./helper";
 import databasesRoutes from "./databases.routes";
-import historyRoutes from "./history.routes";
+import historyRoutes from "./saveAndHistory.routes";
 
 const Dashboard = React.lazy(() => import("../pages/Dashboard"));
 

@@ -26,6 +26,12 @@ const Worksheet: FC<{ parent: "databases" | "history" | "save" }> = ({
   const [tab, setTab] = useState("0");
   const [queries, setQueries] = useTabHistory();
   const [expanded, setExpanded] = useState(false);
+  const tabs = [
+    {
+      lable: "Tab 1",
+      id: "0",
+    },
+  ];
 
   const [gridData, setGridData] = useState<{
     columns: string[];
@@ -78,9 +84,9 @@ const Worksheet: FC<{ parent: "databases" | "history" | "save" }> = ({
   }, [id, parent]);
 
   return (
-    <div className="text-gray-100">
+    <section className="text-gray-100">
       <div className="flex items-center justify-between  px-4">
-        <Tabs onTabChange={handleTabChange} />
+        <Tabs onTabChange={handleTabChange} tabs={tabs} />
         <WorksheetActions
           query={query}
           setQuery={setQuery}
@@ -106,7 +112,7 @@ const Worksheet: FC<{ parent: "databases" | "history" | "save" }> = ({
         />
       </div>
       <DataGrid columns={gridData.columns} data={gridData.data} />
-    </div>
+    </section>
   );
 };
 

@@ -8,7 +8,7 @@ export const Toast = () => {
       return;
     }
     const timer = setTimeout(() => {
-      setToastState({ show: false, message: "Message", type: "info" });
+      setToastState({ show: false, message: "", type: "info" });
     }, 3000);
     return () => clearTimeout(timer);
   }, [toast.show, setToastState]);

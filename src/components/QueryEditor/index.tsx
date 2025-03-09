@@ -27,7 +27,6 @@ const QueryEditor: FC<QueryEditorProps> = ({
   };
 
   return (
-    <article>
       <CodeMirror
         value={query}
         height={height ?? "20rem"}
@@ -41,7 +40,6 @@ const QueryEditor: FC<QueryEditorProps> = ({
           }
         }}
       />
-    </article>
   );
 };
 

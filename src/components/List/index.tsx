@@ -25,15 +25,12 @@ interface ListProps {
 // Function to create a mapping of parent to child items
 const createParentChildMapping = (
   items: ListItemProps[]
-): Record<string, Set<string>> => {
-  const mapping: Record<string, Set<string>> = {};
+): Record<string, string> => {
+  const mapping: Record<string, string> = {};
   items.forEach((item) => {
     if (item.children && item.children.length > 0) {
       item.children.forEach((child) => {
-        if (!mapping[item.id]) {
-          mapping[item.id] = new Set();
-        }
-        mapping[item.id].add(child.id);
+        mapping[child.id] = item.id;
       });
     }
   });
@@ -59,9 +56,8 @@ export const ListItem: FC<
 
   return (
     <div
-      className={`flex justify-between ${
-        id === activeItemId ? "menu-active" : ""
-      }`}
+      className={`flex justify-between ${id === activeItemId ? "menu-active" : ""
+        }`}
     >
       <a>{label}</a>
       <div>
@@ -120,12 +116,10 @@ export const List: FC<ListProps> = ({
           <li key={item.id} onClick={(e) => handleItemClick(e, item.id)}>
             {item.children && item.children.length > 0 ? (
               <details
-                open={
-                  !!(
-                    item.id === activeItemId ||
-                    (activeItemId &&
-                      parentChildMapping[item.id]?.has(activeItemId))
-                  )
+                open={(
+                  item.id === activeItemId ||
+                  parentChildMapping[item.id] === activeItemId
+                )
                 }
               >
                 <summary>{item.label}</summary>

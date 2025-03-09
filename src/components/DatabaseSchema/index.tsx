@@ -19,8 +19,7 @@ export const DatabaseSchema: FC<DatabaseSchemaProps> = ({ id }) => {
   if (!schema.length) return <div>No schema found</div>;
 
   return (
-    <div className="overflow-x-auto">
-      <table className="table">
+      <table className="table overflow-x-auto">
         <thead>
           <tr>
             <th>#</th>
@@ -38,6 +37,5 @@ export const DatabaseSchema: FC<DatabaseSchemaProps> = ({ id }) => {
           ))}
         </tbody>
       </table>
-    </div>
   );
 };

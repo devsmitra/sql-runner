@@ -42,7 +42,7 @@ All the data in the application is mocked and predefined. The application does n
     - **Save Query**: Saves the current query for future reference, allowing easy access to frequently used SQL commands.
     - **Expand Editor**: Toggles between full-screen and normal view to enhance readability and user experience.
 - **Results Display**:
-  - Table view with sorting, filtering, and searching capabilities.
+  - Table view with searching capabilities.
   - Export results in CSV or JSON format for easy data sharing and analysis.
   - Display of total and visible result counts to provide clarity on query outputs.
 
@@ -133,24 +133,37 @@ All the data in the application is mocked and predefined. The application does n
 
 ### Directory Structure
     .
-    ├── src                     # Source files
-    │   ├── assets              # Icons, fonts, and other assets
-    │   ├── components          # Reusable components
-    │   │     ├── Layout        # Layout components
-    │   │     ├── QueryEditor   # SQL query editor components
-    │   │     ├── DataGrid      # Data grid components
-    │   │     ├── List          # List components
-    │   │     ├── Modal         # Modal components
-    │   │     ├── Tabs          # Tab components
-    │   │     ├── Toast         # Toast components
-    │   │     └── ...           # Other components
-    │   ├── contexts            # Context providers
-    │   ├── pages               # Application pages
-    │   ├── routes              # Application routes
-    │   ├── services            # API services
-    │   ├── utils               # Utility functions
-    │   └── App.tsx             # Main application component
-    ├── public                  # Public files
+    ├── src                       # Source files
+    │   ├── assets                # Icons, fonts, and other assets
+    │   │     └── Icons           # Icons directory
+    │   ├── components            # Reusable components
+    │   │     ├── Layout          # Layout components
+    │   │     ├── QueryEditor     # SQL query editor components
+    │   │     ├── DataGrid        # Data grid components
+    │   │     ├── List            # List components
+    │   │     ├── Modal           # Modal components
+    │   │     ├── Tabs            # Tab components
+    │   │     ├── Toast           # Toast components
+    │   │     └── ...             # Other components
+    │   ├── contexts              # Context providers
+    │   ├── pages                 # Application pages
+    │   │     ├── Dashboard       # Dashboard page
+    │   │     ├── Database        # Database views page
+    │   │     └── SaveAndHistory  # Saved queries and history page
+    │   ├── routes                # Application routes
+    │   │     ├── databases       # Database views routes
+    │   │     ├── saveAnHistory   # Saved queries and history routes
+    │   │     └── ...             # Other routes
+    │   ├── services              # API services
+    │   │     ├── database        # Database service
+    │   │     ├── query           # Query service
+    │   │     └── storage         # Local storage service
+    │   ├── utils                 # Utility functions
+    │   │     ├── debounce        # Debounce utility
+    │   │     └── files           # File utility for exporting data
+    │   ├── App.css               # Application styles and tailwind CSS
+    │   └── App.tsx               # Main application component
+    ├── public                    # Public files
     ├── .gitignore
     ├── package.json
     ├── README.md

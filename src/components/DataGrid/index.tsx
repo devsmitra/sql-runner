@@ -86,13 +86,11 @@ const DataGrid: FC<DataGridProps> = ({ columns = [], data = [] }) => {
           </tr>
         )}
         itemContent={(_, item) => (
-          <>
-            {columns.map((column) => (
-              <td className="px-2" key={item.id + column}>
-                {item[column]}
-              </td>
-            ))}
-          </>
+          columns.map((column) => (
+            <td className="px-2" key={item.id + column}>
+              {item[column]}
+            </td>
+          ))
         )}
       />
     </div>

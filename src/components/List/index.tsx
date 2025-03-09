@@ -25,15 +25,12 @@ interface ListProps {
 // Function to create a mapping of parent to child items
 const createParentChildMapping = (
   items: ListItemProps[]
-): Record<string, Set<string>> => {
-  const mapping: Record<string, Set<string>> = {};
+): Record<string, string> => {
+  const mapping: Record<string, string> = {};
   items.forEach((item) => {
     if (item.children && item.children.length > 0) {
       item.children.forEach((child) => {
-        if (!mapping[item.id]) {
-          mapping[item.id] = new Set();
-        }
-        mapping[item.id].add(child.id);
+        mapping[child.id] = item.id;
       });
     }
   });
@@ -109,55 +106,43 @@ export const List: FC<ListProps> = ({
     [items]
   );
 
+  const renderListItem = (items: ListItemProps[]) => (
+    <ul className="menu w-full">
+      {items.map((item) => (
+        <li key={item.id} onClick={(e) => handleItemClick(e, item.id)}>
+          {item.children && item.children.length > 0 ? (
+            <details
+              open={
+                !!(
+                  item.id === activeItemId ||
+                  parentChildMapping[activeItemId ?? ""] === item.id
+                )
+              }
+            >
+              <summary>{item.label}</summary>
+              {renderListItem(item.children)}
+            </details>
+          ) : (
+            <ListItem
+              {...item}
+              icon={icon}
+              activeItemId={activeItemId}
+              onItemAction={onItemAction}
+              iconTooltip={iconTooltip}
+            />
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <div className="overflow-y-scroll">
       <h2 className="text-lg font-semibold text-base-content px-6 pt-2">
         {title}
       </h2>
       <div className="divider p-0 m-0"></div>
-      <ul className="menu w-full">
-        {items.map((item) => (
-          <li key={item.id} onClick={(e) => handleItemClick(e, item.id)}>
-            {item.children && item.children.length > 0 ? (
-              <details
-                open={
-                  !!(
-                    item.id === activeItemId ||
-                    (activeItemId &&
-                      parentChildMapping[item.id]?.has(activeItemId))
-                  )
-                }
-              >
-                <summary>{item.label}</summary>
-                <ul>
-                  {item.children.map((child) => (
-                    <li
-                      key={child.id}
-                      onClick={(e) => handleItemClick(e, child.id)}
-                    >
-                      <ListItem
-                        {...child}
-                        icon={icon}
-                        activeItemId={activeItemId}
-                        onItemAction={onItemAction}
-                        iconTooltip={iconTooltip}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            ) : (
-              <ListItem
-                {...item}
-                icon={icon}
-                activeItemId={activeItemId}
-                onItemAction={onItemAction}
-                iconTooltip={iconTooltip}
-              />
-            )}
-          </li>
-        ))}
-      </ul>
+      {renderListItem(items)}
     </div>
   );
 };

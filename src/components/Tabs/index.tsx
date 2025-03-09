@@ -3,16 +3,12 @@ import PlusSvg from "../../assets/icons/plus-solid.svg";
 
 interface TabProps {
   onTabChange: (tab: string) => void;
+  tabs: {lable: string; id: string}[]
 }
 
-export const Tabs: FC<TabProps> = ({ onTabChange }) => {
+export const Tabs: FC<TabProps> = ({ onTabChange, tabs }) => {
   const [activeTab, setActiveTab] = useState("0");
-  const [tabs, setTabs] = useState([
-    {
-      lable: "Tab 1",
-      id: "0",
-    },
-  ]);
+  const [tabItems, setTabs] = useState(tabs);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
@@ -21,7 +17,7 @@ export const Tabs: FC<TabProps> = ({ onTabChange }) => {
 
   return (
     <div role="tablist" className="tabs tabs-lift">
-      {tabs.map((tab) => (
+      {tabItems.map((tab) => (
         <a
           role="tab"
           className={`tab ${
@@ -40,8 +36,8 @@ export const Tabs: FC<TabProps> = ({ onTabChange }) => {
         className="btn btn-square ml-2 bg-blue-100 tooltip tooltip-bottom"
         onClick={() =>
           setTabs([
-            ...tabs,
-            { lable: `Tab ${tabs.length + 1}`, id: `${tabs.length}` },
+            ...tabItems,
+            { lable: `Tab ${tabItems.length + 1}`, id: `${tabItems.length}` },
           ])
         }
         data-tip="Add Tab"

@@ -75,7 +75,7 @@ All the data in the application is mocked and predefined. The application does n
 
 ## Performance & Optimization
 
-- **Lighthouse Score**: X (TBD)
+- **Lighthouse Score**: 100%
 <img width="1725" alt="Screenshot 2025-03-09 at 12 31 14 AM" src="https://github.com/user-attachments/assets/0ec0300c-85f9-4e4c-9d6d-394f10267873" />
 <img width="1721" alt="Screenshot 2025-03-09 at 12 31 00 AM" src="https://github.com/user-attachments/assets/03283f10-b9cd-434e-93b4-7cc1f0770dcd" />
 
